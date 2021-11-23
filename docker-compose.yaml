@@ -1,10 +1,13 @@
 version: "3.7"
 #https://github.com/compose-spec/compose-spec/blob/master/spec.md#using-extensions-as-fragments
-x-logging: &default-logging
-  options:
-    max-size: "100m"
-    max-file: "5"
-  driver: json-file
+x-logging: 
+      &default-logging
+      driver: "awslogs"
+      options:
+        awslogs-region: ap-southeast-2
+        awslogs-group: jj_airbyte
+        awslogs-create-group: true
+        awslogs-stream-prefix: ${container_name}
 services:
   # hook in case we need to add init behavior
   # every root service (no depends_on) should depend on init
