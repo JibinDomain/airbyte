@@ -6,8 +6,7 @@ x-logging:
       options:
         awslogs-region: ap-southeast-2
         awslogs-group: jj_airbyte
-        awslogs-create-group: true
-        awslogs-stream-prefix: ${container_name}
+        awslogs-create-group: "true"
 services:
   # hook in case we need to add init behavior
   # every root service (no depends_on) should depend on init
